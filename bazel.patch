@@ -100,6 +100,30 @@ index 2a7e8d5..d6f074e 100644
      )
 
      # JDK21 unavailable so use JDK19 instead for linux ppc64le.
+diff --git a/scripts/BUILD b/scripts/BUILD
+index 6f872a4..c14db0c 100644
+--- a/scripts/BUILD
++++ b/scripts/BUILD
+@@ -40,10 +40,18 @@ sh_test(
+     ],
+ )
+ 
++filegroup(
++    name = "jq_linux",
++    srcs = select({
++        "@platforms//cpu:s390x": ["@jq_linux_s390x//file"],
++        "@platforms//cpu:x86_64": ["@jq_linux_amd64//file"],
++    }),
++)
++
+ filegroup(
+     name = "jq",
+     srcs = select({
+-        "@platforms//os:linux": ["@jq_linux_amd64//file"],
++	"@platforms//os:linux": [":jq_linux"],
+         "@platforms//os:macos": ["@jq_macos_amd64//file"],
+         "@platforms//os:windows": ["@jq_windows_amd64//file"],
+     }),
 diff --git a/src/BUILD b/src/BUILD
 index e410cc5..1e0efaa 100644
 --- a/src/BUILD
