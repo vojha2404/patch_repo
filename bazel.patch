@@ -120,7 +120,7 @@ index 6f872a4..c14db0c 100644
      name = "jq",
      srcs = select({
 -        "@platforms//os:linux": ["@jq_linux_amd64//file"],
-+	"@platforms//os:linux": [":jq_linux"],
++        "@platforms//os:linux": [":jq_linux"],
          "@platforms//os:macos": ["@jq_macos_amd64//file"],
          "@platforms//os:windows": ["@jq_windows_amd64//file"],
      }),
