@@ -12,7 +12,7 @@ PACKAGE_NAME="Envoy"
 PACKAGE_VERSION="v1.34.0"
 SOURCE_ROOT="$(pwd)"
 
-PATCH_URL="https://github.com/vojha2404/patch_repo/blob/main"
+PATCH_URL="https://raw.githubusercontent.com/vojha2404/patch_repo/refs/heads/main"
 
 FORCE="false"
 LOG_FILE="$SOURCE_ROOT/logs/${PACKAGE_NAME}-${PACKAGE_VERSION}-$(date +"%F-%T").log"
