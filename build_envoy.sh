@@ -12,7 +12,7 @@ PACKAGE_NAME="Envoy"
 PACKAGE_VERSION="v1.34.0"
 SOURCE_ROOT="$(pwd)"
 
-PATCH_URL="https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/Envoy/${PACKAGE_VERSION}/patch"
+PATCH_URL="https://github.com/vojha2404/patch_repo/blob/main"
 
 FORCE="false"
 LOG_FILE="$SOURCE_ROOT/logs/${PACKAGE_NAME}-${PACKAGE_VERSION}-$(date +"%F-%T").log"
@@ -114,6 +114,7 @@ configureAndInstall() {
   fi
 
   # Apply patches to allow envoy to build
+  # https://github.com/vojha2404/patch_repo/blob/main/luajit-as.patch
   curl -sSL $PATCH_URL/envoy-build.patch | git apply -
   
   # Apply patches for failing tests
