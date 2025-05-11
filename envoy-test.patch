@@ -151,6 +151,28 @@ index 43cf936914..ad25470490 100644
        if (serialize_status != WasmResult::Ok) {
          return serialize_status;
        }
+diff --git a/source/extensions/filters/http/oauth2/filter.cc b/source/extensions/filters/http/oauth2/filter.cc
+index e22497475d..e1688fc9d5 100644
+--- a/source/extensions/filters/http/oauth2/filter.cc
++++ b/source/extensions/filters/http/oauth2/filter.cc
+@@ -238,7 +238,7 @@ std::string generateCodeVerifier(Random::RandomGenerator& random) {
+   // create 4 random uint64_t values to fill the buffer because RFC 7636 recommends 32 octets of
+   // randomness.
+   for (size_t i = 0; i < 4; i++) {
+-    mem_block.appendOne(random.random());
++    mem_block.appendOne(htole64(random.random()));
+   }
+ 
+   std::unique_ptr<uint64_t[]> data = mem_block.release();
+@@ -281,7 +281,7 @@ std::string encrypt(const std::string& plaintext, const std::string& secret,
+   MemBlockBuilder<uint64_t> mem_block(4);
+   // create 2 random uint64_t values to fill the buffer because AES-256-CBC requires 16 bytes IV
+   for (size_t i = 0; i < 2; i++) {
+-    mem_block.appendOne(random.random());
++    mem_block.appendOne(htole64(random.random()));
+   }
+ 
+   std::unique_ptr<uint64_t[]> data = mem_block.release();
 diff --git a/test/common/stream_info/stream_info_impl_test.cc b/test/common/stream_info/stream_info_impl_test.cc
 index 04d1528873..d661a24974 100644
 --- a/test/common/stream_info/stream_info_impl_test.cc
