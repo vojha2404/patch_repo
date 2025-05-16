@@ -388,7 +388,7 @@ case "$DISTRO" in
   ;;
 #----------------------------------------------------------
 
-"ubuntu-24.04" | "ubuntu-24.10")
+"ubuntu-24.04" | "ubuntu-24.10" | "ubuntu-25.04")
   printf -- "\nInstalling %s %s for %s \n" "$PACKAGE_NAME" "$PACKAGE_VERSION" "$DISTRO" |& tee -a "${LOG_FILE}"
   sudo apt-get update
   sudo apt-get install -y autoconf curl wget git libtool patch python3-pip unzip virtualenv pkg-config locales clang-14 gcc g++ libstdc++-12-dev openssl libssl-dev build-essential openjdk-21-jdk-headless python3 zip unzip | tee -a "${LOG_FILE}"
