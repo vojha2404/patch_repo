@@ -129,6 +129,7 @@ configureAndInstall() {
   curl -sSL https://github.com/iii-i/moonjit/commit/035f133798adb856391928600f7cb6b4f81578ab.patch >> $SOURCE_ROOT/envoy/bazel/foreign_cc/luajit-s390x.patch
   curl -sSL $PATCH_URL/luajit-as.patch > $SOURCE_ROOT/envoy/bazel/foreign_cc/luajit-as.patch
   curl -sSL $PATCH_URL/rules_buf-s390x.patch > $SOURCE_ROOT/envoy/api/bazel/rules_buf-s390x.patch
+  curl -sSL $PATCH_URL/grpc-s390x.patch > $SOURCE_ROOT/envoy/api/bazel/grpc-s390x.patch
 
   msg "Building Envoy"
 
