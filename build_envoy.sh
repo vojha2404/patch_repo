@@ -393,10 +393,7 @@ case "$DISTRO" in
   printf -- "\nInstalling %s %s for %s \n" "$PACKAGE_NAME" "$PACKAGE_VERSION" "$DISTRO" |& tee -a "${LOG_FILE}"
   sudo apt-get update
   sudo apt-get install -y autoconf curl wget git libtool patch python3-pip unzip virtualenv pkg-config locales clang-14 gcc g++ libstdc++-12-dev openssl libssl-dev build-essential openjdk-21-jdk-headless python3 zip unzip binutils-gold lld | tee -a "${LOG_FILE}"
-  # Configure linker
-  sudo update-alternatives --install /usr/bin/ld ld /usr/bin/ld.lld-14 20
-  sudo update-alternatives --set ld /usr/bin/ld.lld-14
-  LLVM_HOME_DIR="/usr/lib/llvm-14"
+  LLVM_HOME_DIR="/usr/lib/llvm-20"
   GCC_TOOLCHAIN_VERSION_OVERRIDE="12"
   GCC_TOOLCHAIN_SOURCE="distro"
 
