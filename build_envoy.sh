@@ -7,6 +7,7 @@
 # Execute build script: bash build_envoy.sh    (provide -h for help)
 #==============================================================================
 set -e -o pipefail
+set -x
 
 PACKAGE_NAME="Envoy"
 PACKAGE_VERSION="v1.34.0"
