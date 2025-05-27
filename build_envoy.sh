@@ -7,12 +7,13 @@
 # Execute build script: bash build_envoy.sh    (provide -h for help)
 #==============================================================================
 set -e -o pipefail
+set -x
 
 PACKAGE_NAME="Envoy"
 PACKAGE_VERSION="v1.34.0"
 SOURCE_ROOT="$(pwd)"
 
-PATCH_URL="https://raw.githubusercontent.com/linux-on-ibm-z/scripts/master/Envoy/${PACKAGE_VERSION}/patch"
+PATCH_URL="https://raw.githubusercontent.com/vojha2404/patch_repo/refs/heads/main"
 
 FORCE="false"
 LOG_FILE="$SOURCE_ROOT/logs/${PACKAGE_NAME}-${PACKAGE_VERSION}-$(date +"%F-%T").log"
